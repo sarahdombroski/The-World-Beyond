@@ -1,0 +1,15 @@
+@import url('https://fonts.googleapis.com/css2?family=Almendra:ital,wght@0,400;0,700;1,400;1,700&family=Metamorphous&display=swap');
+@import 'home.css';
+@import 'header-footer.css';
+:root {
+    --purple-color: #681343;
+    --gold-color: #f4af1c;
+    --blue-color: #0A1B9B;
+
+    --heading-font: Metamorphous, Courier, Trebuchet;
+    --paragraph-font: Almendra, Arial, Tahoma;
+}
+
+img {
+    max-height: 500px;
+}

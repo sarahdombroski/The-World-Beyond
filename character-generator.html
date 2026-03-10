@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The World Beyond - Character Generator</title>
+    <link rel="stylesheet" href="css/main.css" />
+    <script src="js/main.js" defer></script>
+</head>
+<body>
+    <header>
+        <h1>The World Beyond</h1>
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="character-generator.html">Create Character</a>
+            <a href="saved-characters.html">Saved Characters</a>
+        </nav>
+    </header>
+    <main>
+        <h2>Create your character</h2>
+        <section id="stats-selection">
+            <h3>Stats:</h3>
+            <form>
+                <label for="character-name">Name:</label>
+                <select id="character-name" name="character-name"></select>
+                <button class="lockStat">$star;</button>
+            
+                <label for="character-class">Class:</label>
+                <select id="character-class" name="character-class"></select>
+
+                <label for="character-race">Race:</label>
+                <select id="character-race" name="character-race"></select>
+
+                <label for="character-ability">Ability:</label>
+                <select id="character-ability" name="character-ability"></select>
+
+                <label for="character-traits">Traits:</label>
+                <select id="character-traits" name="character-traits"></select>
+
+                <label for="character-img">Image:</label>
+                <select id="character-img" name="character-img"></select>
+            </form>
+
+            <button id="randomizeStats">Randomize</button>
+
+            <button id="viewImages">View All Images</button>
+        </section>
+
+        <button id="openCharacterCard">View Character</button>
+    </main>
+    <footer>
+        <p>Special thanks to the D&D 5th Edition API</p>
+    </footer>
+</body>
+</html>
