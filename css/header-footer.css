@@ -1,0 +1,19 @@
+h1 {
+    text-align: center;
+}
+
+nav {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+header {
+    border-bottom: 2px solid var(--gold-color);
+    padding-bottom: 15px;
+    margin-bottom: 15px;
+}
+
+footer {
+    border-top: 2px solid var(--gold-color);
+    margin-top: 15px;
+}

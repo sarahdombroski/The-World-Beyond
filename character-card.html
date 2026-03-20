@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>The World Beyond - Character Card</title>
-    <link rel="stylesheet" href="css/main.css" />
-    <script src="js/main.js" defer></script>
+    <link rel="stylesheet" href="css/card.css" />
+    <script src="js/character-card.mjs" type="module" defer></script>
 </head>
 <body>
     <header>
@@ -21,13 +21,17 @@
             <h2 id="Name"></h2>
             <div id="card-main-stats">
                 <p id="class"></p>
-                <p id="race"></p>
+                <p id="subclass"></p>
             </div>
-            <img src="" alt="Card Image" />
-            <p>Stats:</p>
+            <img src="" alt="Card Image" id="characterCardImage" />
+            <p id="stats-title">Stats:</p>
             <div id="card-all-stats">
-                <p id="stats-ability"></p>
+                <p id="stats-race"></p>
+                <p id="stats-alignment"></p>
                 <p id="stats-traits"></p>
+                <p id="stats-language"></p>
+                <p id="stats-height"></p>
+                <p id="stats-weight"></p>
             </div>
         </div>
         <button id="saveCharacterButton">Save this character</button>

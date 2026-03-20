@@ -1,0 +1,111 @@
+/* character-generator.html */
+@import 'main.css';
+
+.star-rating input[type="checkbox"] {
+  display: none; /* Hide the default checkbox */
+}
+
+.star-rating .star {
+  cursor: pointer;
+  color: gray; /* Default color for an unchecked star */
+  font-size: 30px; /* Adjust size as needed */
+  transition: color 0.2s; /* Smooth color transition */
+}
+
+/* Change the star's color when the associated hidden checkbox is checked */
+.star-rating input[type="checkbox"]:checked + label .star {
+  color: gold; /* Color when checked (e.g., gold/yellow) */
+}
+
+h2 {
+    margin-left: 30px;
+}
+
+#inputs {
+    border: 2px solid var(--gold-color);
+    display: flex;
+    flex-direction: column;
+    padding: 15px;
+    padding-top: 0;
+    margin-left: 50px;
+    margin-right: 50px;
+}
+
+form label {
+    margin-top: 15px;
+}
+
+.selectDiv {
+    display: flex;
+    align-items: center;
+}
+
+.selectDiv select {
+    width: 75vw;
+}
+
+#randomizeStats {
+    color: var(--gold-color);
+    background-color: var(--blue-color);
+    border-radius: 50%;
+    height: 150px;
+    width: 150px;
+    border: solid var(--blue-color) 2px;
+    font-size: var(--medium-font-size);
+}
+
+#viewImages, #openCharacterCard {
+    color: white;
+    background-color: var(--teal-color);
+    border: solid 2px var(--teal-color);
+    height: 50px;
+    width: 150px;
+    border-radius: 12px;
+}
+
+#buttons {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    margin: 15px auto;
+}
+
+dialog {
+    position: absolute;
+    width: 90vw;
+    top: 0;
+    background-color: var(--teal-color);
+}
+
+#imageGallery {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    justify-items: center;
+}
+
+.imageDisplay {
+    width: 20vw;
+    text-align: center;
+}
+
+img {
+    width: 15vw;
+}
+
+span {
+    color: white;
+    font-size: var(--heading-font-size);
+    cursor: pointer;
+}
+
+@media screen and (min-width: 720px) {
+    #stats-selection {
+        display: flex;
+    }
+    #inputs {
+        width: 60vw;
+    }
+    #buttons {
+        flex-direction: column;
+    }
+}

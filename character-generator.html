@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>The World Beyond - Character Generator</title>
-    <link rel="stylesheet" href="css/main.css" />
-    <script src="js/main.js" defer></script>
+    <link rel="stylesheet" href="css/generator.css" />
+    <script src="js/generator.mjs" type="module" defer></script>
 </head>
 <body>
     <header>
@@ -17,36 +17,137 @@
         </nav>
     </header>
     <main>
-        <h2>Create your character</h2>
-        <section id="stats-selection">
-            <h3>Stats:</h3>
-            <form>
-                <label for="character-name">Name:</label>
-                <select id="character-name" name="character-name"></select>
-                <button class="lockStat">$star;</button>
-            
-                <label for="character-class">Class:</label>
-                <select id="character-class" name="character-class"></select>
+        <h2>Create your character:</h2>
+            <form id="stats-selection">
+                <div id="inputs">
+                    <label for="character-name">Name:</label>
+                    <input type="text" name="character-name" id="character-name" required />
+                
+                    <label for="character-class">Class:</label>
+                    <div class="selectDiv">
+                        <select id="character-class" name="character-class" required>
+                            <option value="" disabled selected hidden>Select a class</option>
+                        </select>
+                        <div class="star-rating">
+                            <input type="checkbox" class="lock" data-target="character-class" id="star1" />
+                            <label for="star1">
+                                <span class="star">&#9733;</span>
+                            </label>
+                        </div>
+                    </div>
 
-                <label for="character-race">Race:</label>
-                <select id="character-race" name="character-race"></select>
+                    <label for="character-subclass">Class:</label>
+                    <div class="selectDiv">
+                        <select id="character-subclass" name="character-subclass" required>
+                            <option value="" disabled selected hidden>Select a subclass</option>
+                        </select>
+                        <div class="star-rating">
+                            <input type="checkbox" class="lock" data-target="character-subclass" id="star2" />
+                            <label for="star2">
+                                <span class="star">&#9733;</span>
+                            </label>
+                        </div>
+                    </div>
 
-                <label for="character-ability">Ability:</label>
-                <select id="character-ability" name="character-ability"></select>
+                    <label for="character-race">Species:</label>
+                    <div class="selectDiv">
+                        <select id="character-race" name="character-race" required>
+                            <option value="" disabled selected hidden>Select a race</option>
+                        </select>
+                        <div class="star-rating">
+                            <input type="checkbox" class="lock" data-target="character-race" id="star3" />
+                            <label for="star3">
+                                <span class="star">&#9733;</span>
+                            </label>
+                        </div>
+                    </div>
 
-                <label for="character-traits">Traits:</label>
-                <select id="character-traits" name="character-traits"></select>
+                    <label for="character-language">Language:</label>
+                    <div class="selectDiv">
+                        <select id="character-language" name="character-language" multiple>
+                            <option value="" disabled selected hidden>Select a language</option>
+                        </select>
+                        <div class="star-rating">
+                            <input type="checkbox" class="lock" data-target="character-language" id="star4" />
+                            <label for="star4">
+                                <span class="star">&#9733;</span>
+                            </label>
+                        </div>
+                    </div>
 
-                <label for="character-img">Image:</label>
-                <select id="character-img" name="character-img"></select>
+                    <label for="character-height">Height:</label>
+                    <input type="number" id="character-height" name="character-height" min="0" required />
+
+                    <label for="character-weight">Weight:</label>
+                    <input type="number" id="character-weight" name="character-weight" min="0" required />
+
+                    <label for="character-alignment">Alignment:</label>
+                    <div class="selectDiv">
+                        <select id="character-alignment" name="character-alignment" required>
+                            <option value="" disabled selected hidden>Select an alignment</option>
+                        </select>
+                        <div class="star-rating">
+                            <input type="checkbox" class="lock" data-target="character-alignment" id="star5" />
+                            <label for="star5">
+                                <span class="star">&#9733;</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <label for="character-skill">Skill:</label>
+                    <div class="selectDiv">
+                        <select id="character-skill" name="character-skill" required>
+                            <option value="" disabled selected hidden>Select a skill</option>
+                        </select>
+                        <div class="star-rating">
+                            <input type="checkbox" class="lock" data-target="character-skill" id="star6" />
+                            <label for="star6">
+                                <span class="star">&#9733;</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <label for="character-traits">Traits:</label>
+                    <div class="selectDiv">
+                        <select id="character-traits" name="character-traits" multiple required>
+                            <option value="" disabled selected hidden>Select a trait</option>
+                        </select>
+                        <div class="star-rating">
+                            <input type="checkbox" class="lock" data-target="character-traits" id="star7" />
+                            <label for="star7">
+                                <span class="star">&#9733;</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <label for="character-img">Image:</label>
+                    <div class="selectDiv">
+                        <select id="character-img" name="character-img" required>
+                            <option value="" disabled selected hidden>Select an image</option>
+                        </select>
+                        <div class="star-rating">
+                            <input type="checkbox" class="lock" data-target="character-img" id="star8" />
+                            <label for="star8">
+                                <span class="star">&#9733;</span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="buttons">
+                    <button id="randomizeStats" type="button">Randomize</button>
+
+                    <button id="viewImages" type="button">View All Images</button>
+
+                    <button id="openCharacterCard" type="submit">View Character</button>
+                </div>
             </form>
 
-            <button id="randomizeStats">Randomize</button>
-
-            <button id="viewImages">View All Images</button>
-        </section>
-
-        <button id="openCharacterCard">View Character</button>
+        <dialog id="imageModal">
+            <span class="closeImageModal">&times;</span>
+            <div id="imageGallery"></div>
+            <span class="closeImageModal">&times;</span>
+        </dialog>
     </main>
     <footer>
         <p>Special thanks to the D&D 5th Edition API</p>

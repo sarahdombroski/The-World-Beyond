@@ -1,0 +1,53 @@
+/* character-card.html */
+@import 'main.css';
+
+#card-outline {
+    border: solid 2px var(--gold-color);
+    padding: 15px;
+    max-width: 70vw;
+    margin: 0 auto;
+}
+
+h2, #stats-title {
+    text-align: center;
+}
+
+#card-main-stats {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+img {
+    max-width: 60vw;
+    max-height: 50vh;
+    display: block;
+    margin: 0 auto;
+}
+
+#card-all-stats {
+    width: 75vw;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    justify-items: center;
+}
+
+#saveCharacterButton {
+    color: white;
+    background-color: var(--teal-color);
+    border: solid 2px var(--teal-color);
+    height: 50px;
+    width: 150px;
+    border-radius: 12px;
+    display: block;
+    margin: 15px auto;
+}
+
+@media screen and (min-width: 720px) {
+    #card-outline {
+        max-width: 50vw;
+    }
+    #card-all-stats {
+        width: 50vw;
+    }
+}

@@ -1,4 +1,11 @@
+/* index.html */
+@import 'main.css';
+
 .flex-items {
     display: flex;
     flex-direction: row;
+}
+
+img {
+    max-height: 500px;
 }
