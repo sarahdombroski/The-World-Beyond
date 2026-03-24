@@ -1,6 +1,75 @@
 /* saved-characters.html */
 @import 'main.css';
 
+#saved-gallery {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.card-outline {
+    border: solid 2px var(--gold-color);
+    padding: 15px;
+    max-width: 70vw;
+    margin: 0 auto;
+}
+
+#charactersTitle {
+    margin-bottom: 15px;
+}
+
+h2, .stats-title {
+    text-align: center;
+    margin: 0;
+}
+
+.card-main-stats {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+img {
+    max-width: 60vw;
+    max-height: 35vh;
+    display: block;
+    margin: 0 auto;
+    margin-bottom: 5px;
+}
+
+.card-all-stats {
+    width: 75vw;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    justify-items: center;
+}
+
+p {
+    margin: 5px;
+}
+
+.buttons {
+    display: flex;
+}
+
 button {
-    color: black;
+    color: white;
+    background-color: var(--teal-color);
+    border: solid 2px var(--teal-color);
+    height: 35px;
+    width: 100px;
+    border-radius: 12px;
+    display: block;
+    margin: 15px auto;
+}
+
+@media screen and (min-width: 720px) {
+    #saved-gallery {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+    }
+
+    .card-all-stats {
+        width: 25vw;
+    }
 }

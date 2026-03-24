@@ -1,6 +1,6 @@
 // character-card.html
 
-import { getLocalStorage } from "./utils.mjs";
+import { getLocalStorage, setLocalStorage } from "./utils.mjs";
 
 const nameEl = document.querySelector('#Name');
 const classEl = document.querySelector('#class');
@@ -12,10 +12,12 @@ const heightEl = document.querySelector('#stats-height');
 const weightEl = document.querySelector('#stats-weight');
 const imageEl = document.querySelector('#characterCardImage');
 
-function init() {
-    const characterData = getLocalStorage('characterForm');
-    console.log(characterData);
+const saveButton = document.querySelector('#saveCharacterButton');
 
+const characterData = getLocalStorage('characterForm');
+console.log(characterData);
+
+function init() {
     if (characterData) {
         nameEl.innerText = characterData.name;
         classEl.innerText = characterData.classSelected;
@@ -35,4 +37,22 @@ function init() {
     }
 }
 
+function saveCharacter(e) {
+    e.preventDefault();
+
+    let savedCharacters = getLocalStorage('savedCharacters');
+    if (!savedCharacters) {
+        savedCharacters = [];
+    }
+
+    savedCharacters.push(characterData);
+
+    setLocalStorage('savedCharacters', savedCharacters);
+
+    alert('Character Saved Successfully!');
+    window.location.href = 'saved-characters.html';
+}
+
 init();
+
+saveButton.addEventListener('click', saveCharacter);
