@@ -19,14 +19,14 @@ console.log(characterData);
 
 function init() {
     if (characterData) {
-        nameEl.innerText = characterData.name;
-        classEl.innerText = characterData.classSelected;
-        subclassEl.innerText = characterData.subclass;
-        raceEl.innerText = characterData.race;
-        traitsEl.innerText = characterData.traits;
-        languageEl.innerText = characterData.language;
-        heightEl.innerText = characterData.height;
-        weightEl.innerText = characterData.weight;
+        nameEl.innerText += characterData.name;
+        classEl.innerText += characterData.classSelected;
+        subclassEl.innerText += characterData.subclass;
+        raceEl.innerText += characterData.race;
+        traitsEl.innerText += characterData.traits;
+        languageEl.innerText += characterData.language;
+        heightEl.innerText += characterData.height;
+        weightEl.innerText += characterData.weight;
         imageEl.src = `images/${characterData.imagePath}`;
     } else {
         console.log('No Data');

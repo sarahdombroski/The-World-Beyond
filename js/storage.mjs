@@ -10,18 +10,18 @@ function cardTemplate(c) {
         <div class="card-outline">
             <h2 class="Name">${c.name}</h2>
             <div class="card-main-stats">
-                <p class="characterClass">${c.classSelected}</p>
-                <p class="subclass">${c.subclass}</p>
+                <p class="characterClass">Class: ${c.classSelected}</p>
+                <p class="subclass">Subclass: ${c.subclass}</p>
             </div>
             <img src="images/${c.imagePath}" alt="Card Image" class="characterCardImage" />
             <p class="stats-title">Stats:</p>
             <div class="card-all-stats">
-                <p class="stats-race">${c.race}</p>
-                <p class="stats-alignment">${c.alignment}</p>
-                <p class="stats-traits">${c.traits}</p>
-                <p class="stats-language">${c.language}</p>
-                <p class="stats-height">${c.height}</p>
-                <p class="stats-weight">${c.weight}</p>
+                <p class="stats-race">Race: ${c.race}</p>
+                <p class="stats-alignment">Alignment: ${c.alignment}</p>
+                <p class="stats-traits">Traits: ${c.traits}</p>
+                <p class="stats-language">Language: ${c.language}</p>
+                <p class="stats-height">Height: ${c.height}</p>
+                <p class="stats-weight">Weight: ${c.weight}</p>
             </div>
             <div class="buttons">
                 <button class="edit-character">Edit</button>

@@ -70,6 +70,17 @@ button {
     }
 
     .card-all-stats {
+        display: flex;
+        flex-direction: column;
         width: 25vw;
+    }
+}
+
+@media screen and (min-width: 1200px) {
+    .card-all-stats {
+        margin: 0 auto;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        justify-items: center;
     }
 }
