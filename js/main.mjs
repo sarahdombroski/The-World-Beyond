@@ -1,5 +1,22 @@
 // Index.html
-import { fetchData } from "./utils.mjs";
+import { createSparkle } from "./utils.mjs"
 
-const wizard = await fetchData("classes/wizard");
-console.log(wizard);
+document.addEventListener('mousemove', (e) => {
+    createSparkle(e.clientX, e.clientY);
+})
+
+let lastSparkle = 0;
+
+document.addEventListener("mousemove", (e) => {
+    const now = Date.now();
+    if (now - lastSparkle > 30) {
+        createSparkle(e.clientX, e.clientY);
+        lastSparkle = now;
+    }
+});
+
+document.addEventListener("click", (e) => {
+    for (let i = 0; i < 10; i++) {
+        createSparkle(e.clientX, e.clientY);
+    }
+});

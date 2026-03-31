@@ -1,5 +1,5 @@
 // character-generator.html
-import { fetchData, setLocalStorage, characterImages, getLocalStorage } from "./utils.mjs";
+import { fetchData, createSparkle, setLocalStorage, characterImages, getLocalStorage, summoningText, randomNames, elfNames, dwarfNames, darkNames, knightNames, chaosNames, mageNames, rogueNames, natureNames } from "./utils.mjs";
 
 const nameEl = document.querySelector('#character-name');
 const classEl = document.querySelector('#character-class');
@@ -18,8 +18,26 @@ const imageGalleryEl = document.querySelector('#imageGallery');
 const closeImageModalButtons = document.querySelectorAll('.closeImageModal');
 const viewImagesButton = document.querySelector('#viewImages');
 
+const overlay = document.querySelector('#summonOverlay');
+const overlayTextEl = document.querySelector('.summon-text');
 const randomButton = document.querySelector('#randomizeStats');
 const allSelect = document.querySelectorAll('select');
+const allTypingInputs = document.querySelectorAll('input:not([type="checkbox"])');
+
+const randomNameButton = document.querySelector('#randomName');
+const nameModal = document.querySelector('#nameModal');
+const closeNameModal = document.querySelector('#closeNameModal');
+const modalNameEl = document.querySelector('#selectedName');
+
+const anyRandomNameButton = document.querySelector('#anyName');
+const elfNameButton = document.querySelector('#elfName');
+const dwarfNameButton = document.querySelector('#dwarfName');
+const darkNameButton = document.querySelector('#darkName');
+const mageNameButton = document.querySelector('#mageName');
+const rogueNameButton = document.querySelector('#rogueName');
+const knightNameButton = document.querySelector('#knightName');
+const natureNameButton = document.querySelector('#natureName');
+const chaosNameButton = document.querySelector('#chaosName');
 
 const form = document.querySelector('form');
 const submitButton = form.querySelector('button[type="submit"]');
@@ -44,6 +62,11 @@ function randomizeSelection(selectElement) {
     const options = Array.from(selectElement.options).filter(opt => !opt.disabled && opt.value !== '');
     const randomIndex = Math.floor(Math.random() * options.length);
     selectElement.value = options[randomIndex].value;
+}
+
+function getRandomArrayText(array) {
+    const randomIndex = Math.floor(Math.random() * array.length);
+    return array[randomIndex];
 }
 
 async function init() {
@@ -105,6 +128,47 @@ function renderImageModal() {
     })})
 }
 
+function typeText(element, text, speed = 75) {
+    element.textContent = "";
+    let index = 0;
+
+    function type() {
+        if (index < text.length) {
+            element.textContent += text.charAt(index);
+            index++;
+            setTimeout(type, speed);
+        }
+    }
+
+    type();
+}
+
+function handleNameButtonClick(array) {
+    const modalRandomName = getRandomArrayText(array);
+    typeText(modalNameEl, modalRandomName);
+}
+
+function renderNameModal() {
+    nameModal.show();
+
+    anyRandomNameButton.addEventListener('click', () => {
+        const randomArray = getRandomArrayText(randomNames);
+        handleNameButtonClick(randomArray);
+    })
+    elfNameButton.addEventListener('click', () => {handleNameButtonClick(elfNames)});
+    dwarfNameButton.addEventListener('click', () => {handleNameButtonClick(dwarfNames)});
+    darkNameButton.addEventListener('click', () => {handleNameButtonClick(darkNames)});
+    mageNameButton.addEventListener('click', () => {handleNameButtonClick(mageNames)});
+    rogueNameButton.addEventListener('click', () => {handleNameButtonClick(rogueNames)});
+    knightNameButton.addEventListener('click', () => {handleNameButtonClick(knightNames)});
+    natureNameButton.addEventListener('click', () => {handleNameButtonClick(natureNames)});
+    chaosNameButton.addEventListener('click', () => {handleNameButtonClick(chaosNames)});
+
+    closeNameModal.addEventListener('click', () => {
+        nameModal.close();
+    })
+}
+
 function sendToCharacterCard(e) {
     e.preventDefault();
 
@@ -158,17 +222,61 @@ function sendToCharacterCard(e) {
 
 init();
 randomButton.addEventListener('click', () => {
-    allSelect.forEach(s => {
-        const lock = document.querySelector(`.lock[data-target="${s.id}"]`);
-        
-        if (lock && lock.checked) {
-            return;
-        }
-        
-        randomizeSelection(s);
-    })
+    overlay.classList.add('active');
+    overlayTextEl.innerText = getRandomArrayText(summoningText);
+
+    setTimeout(() => {
+        allSelect.forEach(s => {
+            const lock = document.querySelector(`.lock[data-target="${s.id}"]`);
+            
+            if (lock && lock.checked) {
+                return;
+            }
+            
+            randomizeSelection(s);
+        });
+        allTypingInputs.forEach(i => {
+            const lock = document.querySelector(`.lock[data-target="${i.id}"]`);
+
+            if (lock && lock.checked) {
+                return;
+            }
+
+            if (i.type === 'number') {
+                const randomNumber = Math.floor(Math.random() * (108 - 24)) + 24
+                i.value = randomNumber;
+            } 
+            else {
+                const randomNameType = getRandomArrayText(randomNames);
+                const randomName = getRandomArrayText(randomNameType);
+                i.value = randomName;
+            }
+        });
+        overlay.classList.remove('active');
+    }, 1800);
 })
 
 form.addEventListener('submit', sendToCharacterCard);
 
 viewImagesButton.addEventListener('click', renderImageModal);
+randomNameButton.addEventListener('click', renderNameModal);
+
+document.addEventListener('mousemove', (e) => {
+    createSparkle(e.clientX, e.clientY);
+})
+
+let lastSparkle = 0;
+
+document.addEventListener("mousemove", (e) => {
+    const now = Date.now();
+    if (now - lastSparkle > 30) {
+        createSparkle(e.clientX, e.clientY);
+        lastSparkle = now;
+    }
+});
+
+document.addEventListener("click", (e) => {
+    for (let i = 0; i < 10; i++) {
+        createSparkle(e.clientX, e.clientY);
+    }
+});

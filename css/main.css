@@ -14,6 +14,10 @@
     --paragraph-font-size: 15px;
 }
 
+body, a, button {
+  cursor: url('../home-images/magicwand.png'), auto;
+}
+
 h1 {
     font: var(--heading-font);
     font-size: var(--heading-font-size);
@@ -36,10 +40,6 @@ a {
     text-decoration: none;
 }
 
-a, button {
-    cursor: pointer;
-}
-
 input {
     background-color: var(--purple-color);
     border: white solid 2px;
@@ -48,4 +48,42 @@ input {
 
 body {
     background-color: var(--purple-color);
+}
+
+a:hover, button:hover {
+    transform: translateY(-2.5px);
+}
+
+#homeNav {
+    animation: float 1s ease infinite;
+}
+
+#characterNav {
+    animation: float 1s ease 666ms infinite;
+}
+
+#savedNav {
+    animation: float 1s ease 333ms infinite;
+}
+
+@keyframes float {
+    0% { transform: translateY(0)}
+    50% { transform: translateY(-5px)}
+    100% { transform: translateY(0)}
+}
+
+.sparkle {
+    position: fixed;
+    font-size: 10px;
+    background: white;
+    border-radius: 50%;
+    pointer-events: none;
+    animation: sparkleFade .6s ease-out forwards;
+    text-shadow: 0 0 6px rgba(255,255,255,0.8),
+                0 0 12px rgba(150,200,255,0.6);
+}
+
+@keyframes sparkleFade {
+    0% { opacity: 1; transform: scale(1) translateY(0); }
+    100% { opacity: 0; transform: scale(.5) translateY(-10px); }
 }

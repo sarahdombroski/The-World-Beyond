@@ -7,6 +7,11 @@ nav {
     justify-content: space-evenly;
 }
 
+nav a {
+    width: 300px;
+    text-align: center;
+}
+
 header {
     border-bottom: 2px solid var(--gold-color);
     padding-bottom: 15px;
