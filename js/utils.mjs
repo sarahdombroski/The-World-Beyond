@@ -21,6 +21,17 @@ export function getLocalStorage(key) {
     return JSON.parse(localStorage.getItem(key));
 }
 
+export function getList(itemsArray) {
+    let items = ``;
+    for (let i = 0; i < itemsArray.length; i++) {
+        items += itemsArray[i];
+        if (i != itemsArray.length - 1) {
+            items += ", "
+        }
+    }
+    return items;
+}
+
 export function createSparkle(x, y) {
     const sparkle = document.createElement('div');
     sparkle.classList.add('sparkle');

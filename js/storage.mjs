@@ -1,5 +1,5 @@
 // saved-characters.html
-import { getLocalStorage, setLocalStorage, createSparkle } from "./utils.mjs";
+import { getLocalStorage, setLocalStorage, createSparkle, getList } from "./utils.mjs";
 
 const savedGallery = document.querySelector('#saved-gallery');
 const editModal = document.querySelector('#editModal');
@@ -18,8 +18,8 @@ function cardTemplate(c) {
             <div class="card-all-stats">
                 <p class="stats-race">Race: ${c.race}</p>
                 <p class="stats-alignment">Alignment: ${c.alignment}</p>
-                <p class="stats-traits">Traits: ${c.traits}</p>
-                <p class="stats-language">Language: ${c.language}</p>
+                <p class="stats-traits">Traits: ${getList(c.traits)}</p>
+                <p class="stats-language">Language: ${getList(c.language)}</p>
                 <p class="stats-height">Height: ${c.height}</p>
                 <p class="stats-weight">Weight: ${c.weight}</p>
             </div>

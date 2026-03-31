@@ -1,6 +1,6 @@
 // character-card.html
 
-import { getLocalStorage, setLocalStorage, createSparkle } from "./utils.mjs";
+import { getLocalStorage, setLocalStorage, createSparkle, getList } from "./utils.mjs";
 
 const nameEl = document.querySelector('#Name');
 const classEl = document.querySelector('#class');
@@ -11,11 +11,11 @@ const languageEl = document.querySelector('#stats-language');
 const heightEl = document.querySelector('#stats-height');
 const weightEl = document.querySelector('#stats-weight');
 const imageEl = document.querySelector('#characterCardImage');
+const alignmentEl = document.querySelector('#stats-alignment');
 
 const saveButton = document.querySelector('#saveCharacterButton');
 
 const characterData = getLocalStorage('characterForm');
-console.log(characterData);
 
 function init() {
     if (characterData) {
@@ -23,10 +23,11 @@ function init() {
         classEl.innerText += characterData.classSelected;
         subclassEl.innerText += characterData.subclass;
         raceEl.innerText += characterData.race;
-        traitsEl.innerText += characterData.traits;
-        languageEl.innerText += characterData.language;
+        traitsEl.innerText += getList(characterData.traits);
+        languageEl.innerText += getList(characterData.language);
         heightEl.innerText += characterData.height;
         weightEl.innerText += characterData.weight;
+        alignmentEl.innerHTML += characterData.alignment;
         imageEl.src = `images/${characterData.imagePath}`;
     } else {
         console.log('No Data');

@@ -21,6 +21,11 @@ h2 {
     margin-left: 30px;
 }
 
+h3 {
+    margin-left: 30px;
+    font-size: var(--small-font-size);
+}
+
 #inputs {
     border: 2px solid var(--gold-color);
     display: flex;
