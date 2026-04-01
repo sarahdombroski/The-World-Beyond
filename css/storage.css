@@ -11,6 +11,7 @@
     border: solid 2px var(--gold-color);
     padding: 15px;
     max-width: 70vw;
+    height: 95%;
     margin: 0 auto;
 }
 
